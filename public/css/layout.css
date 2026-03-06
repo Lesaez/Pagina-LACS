@@ -1,82 +1,228 @@
-/* HEADER */
+/* ================= BODY ================= */
 
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: var(--color-dark);
-  color: white;
-  z-index: 1000;
-  box-shadow: var(--shadow-md);
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--color-bg);
+
+  padding-top:70px;
 }
 
-.header-container {
-  max-width: 1300px;
-  margin: auto;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
+/* ================= HEADER ================= */
+
+.header{
+
+  position:fixed;
+  top:0;
+  width:100%;
+  height:70px;
+
+  background:var(--color-dark);
+  color:white;
+
+  z-index:1000;
+
+  display:flex;
+  align-items:center;
+
+  box-shadow:var(--shadow-md);
+
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: 600;
+/* CONTENEDOR */
+
+.header-container{
+
+  max-width:1300px;
+  margin:auto;
+
+  width:100%;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:20px;
+
+  padding:0 20px;
+
 }
 
-.header-center {
-  display: flex;
-  gap: 10px;
-  flex: 1;
-  max-width: 600px;
+/* LOGO */
+
+.logo{
+
+  font-size:20px;
+  font-weight:600;
+
+  white-space:nowrap;
+
 }
 
-.header-center input,
-.header-center select {
-  flex: 1;
+/* ZONA CENTRAL */
+
+.header-center{
+
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+
+  flex:1;
+  max-width:600px;
+
 }
 
-/* MAIN */
+/* ================= BUSCADOR ================= */
 
-.main {
-  margin-top: 110px;
-  padding: 20px;
+.search-box{
+
+  position:relative;
+  flex:1;
+
 }
 
-.container {
-  max-width: 1300px;
-  margin: auto;
+.search-box input{
+
+  width:100%;
+  height:38px;
+
+  padding:0 12px 0 36px;
+
+  border-radius:var(--radius-md);
+  border:1px solid rgba(255,255,255,0.15);
+
+  background:rgba(255,255,255,0.08);
+  color:white;
+
+  outline:none;
+
+  transition:.2s;
+
 }
 
-/* CARD */
-
-.card {
-  background: var(--color-card);
-  padding: 25px;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 20px;
+.search-box input::placeholder{
+  color:rgba(255,255,255,0.6);
 }
 
-/* GRID FORM */
+.search-box input:focus{
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
+  border-color:var(--color-primary);
+  background:rgba(255,255,255,0.12);
+
 }
 
-.form-buttons {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+/* ICONO LUPA */
+
+.search-icon{
+
+  position:absolute;
+
+  left:10px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:16px;
+  height:16px;
+
+  stroke:rgba(255,255,255,0.6);
+  stroke-width:2;
+
+  fill:none;
+
+  pointer-events:none;
+
 }
 
-/* TABLE CONTAINER */
+/* ================= SELECT ================= */
 
-.table-container {
-  overflow-x: auto;
+.select-modern{
+
+  height:38px;
+
+  padding:0 10px;
+
+  border-radius:var(--radius-md);
+  border:1px solid rgba(255,255,255,0.15);
+
+  background:rgba(255,255,255,0.08);
+  color:white;
+
+  outline:none;
+
+}
+
+/* ================= BOTONES ================= */
+
+.header-actions{
+
+  display:flex;
+  align-items:center;
+
+  gap:10px;
+
+}
+
+.btn{
+
+  border:none;
+  border-radius:var(--radius-md);
+
+  padding:8px 14px;
+
+  cursor:pointer;
+
+  font-size:14px;
+
+}
+
+.btn-primary{
+
+  background:var(--color-primary);
+  color:white;
+
+}
+
+.btn-primary:hover{
+
+  background:var(--color-primary-hover);
+
+}
+
+/* ================= MAIN ================= */
+
+.main{
+
+  padding:20px;
+
+}
+
+.container{
+
+  max-width:1300px;
+  margin:auto;
+
+}
+
+/* ================= CARD ================= */
+
+.card{
+
+  background:var(--color-card);
+
+  padding:25px;
+
+  border-radius:var(--radius-lg);
+
+  box-shadow:var(--shadow-sm);
+
+  margin-bottom:20px;
+
+}
+
+/* ================= TABLE ================= */
+
+.table-container{
+  overflow-x:auto;
 }
