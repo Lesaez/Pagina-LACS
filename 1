@@ -1,0 +1,53 @@
+mport matplotlib.pyplot as plt
+import numpy as np
+
+# Datos
+categorias = [
+"Grabación", "Edición", "Mantenimiento", "Archivo",
+"Audio", "Estudio TV", "Iluminación", "Fotografía"
+]
+
+valores = [345.5, 195, 182, 170, 75, 56.5, 20, 18.5]
+
+# Orden descendente ya definido
+y_pos = np.arange(len(categorias))
+
+# Figura estilo Napkin (minimalista)
+plt.figure(figsize=(16, 9))
+ax = plt.gca()
+
+# Barras negras sólidas
+bars = ax.barh(y_pos, valores, color="black", height=0.6)
+
+# Etiquetas
+ax.set_yticks(y_pos)
+ax.set_yticklabels(categorias, fontsize=18)
+ax.invert_yaxis()
+
+# Quitar ejes innecesarios (estética limpia tipo Napkin)
+ax.spines["top"].set_visible(False)
+ax.spines["right"].set_visible(False)
+ax.spines["left"].set_visible(False)
+ax.spines["bottom"].set_visible(False)
+
+ax.tick_params(left=False, bottom=False, labelbottom=False)
+
+# Etiquetas de valor al final de cada barra
+for i, v in enumerate(valores):
+ax.text(v + 8, i, f"{v}", va="center", fontsize=18, color="black")
+
+# Título fuerte y limpio
+plt.title("Distribución Operativa (Total: 1062,5)",
+fontsize=28, weight="bold", pad=30)
+
+plt.tight_layout()
+
+# Exportación en PNG con fondo transparente real
+plt.savefig(
+"distribucion_operativa_bn_transparente.png",
+dpi=300,
+bbox_inches="tight",
+transparent=True
+)
+
+plt.show()

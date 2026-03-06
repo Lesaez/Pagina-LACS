@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Reporte de Daños - LACS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+
+</head>
+
+
+<body>
+
+<header class="header">
+<div class="header-container">
+
+<h1 class="logo">LACS</h1>
+
+<div class="header-actions">
+
+<button onclick="window.location.href='home.html'" class="btn btn-primary">
+Inicio
+</button>
+
+</div>
+
+</div>
+</header>
+
+
+
+<main class="main">
+
+<div class="container">
+
+<section class="solicitud-header">
+
+<h2>Reporte de daños de activos del laboratorio</h2>
+
+<p>
+En este apartado podrá reportar daños o incidentes relacionados con los activos del laboratorio.
+Por favor diligencie la siguiente información para que el equipo encargado pueda revisar la situación.
+</p>
+
+</section>
+
+
+
+<section class="card solicitud-form-container">
+
+<h3>Formulario de reporte</h3>
+
+<form id="formDanios" enctype="multipart/form-data">
+
+<div class="form-grid">
+
+<div class="form-field">
+<label>Nombre y Apellidos</label>
+<input type="text" name="nombre" required>
+</div>
+
+<div class="form-field">
+<label>Documento de identidad</label>
+<input type="text" name="documento" required>
+</div>
+
+<div class="form-field">
+<label>Nombre del jefe</label>
+<input type="text" name="jefe" required>
+</div>
+
+<div class="form-field">
+<label>Número de activo</label>
+<input type="text" name="activo" placeholder="Si no tiene número indique el activo relacionado">
+</div>
+
+<div class="form-field full">
+<label>Descripción de lo sucedido</label>
+<textarea name="descripcion" required></textarea>
+</div>
+
+<div class="form-field full">
+<label>Foto del daño (opcional)</label>
+<input type="file" name="foto" accept="image/*">
+</div>
+
+</div>
+
+
+
+<div style="margin-top:30px">
+
+<button type="submit" class="btn btn-primary">
+Enviar reporte
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+</div>
+
+</main>
+
+
+
+<script>
+
+document.getElementById("formDanios").addEventListener("submit", async (e) => {
+
+e.preventDefault();
+
+const form = document.getElementById("formDanios");
+
+const formData = new FormData(form);
+
+try{
+
+const response = await fetch("/api/reporte-danos",{
+
+method:"POST",
+body:formData
+
+});
+
+if(response.ok){
+
+alert("Reporte enviado correctamente");
+
+form.reset();
+
+}else{
+
+alert("Error enviando el reporte");
+
+}
+
+}catch(error){
+
+console.error(error);
+
+alert("Error de conexión con el servidor");
+
+}
+
+});
+
+</script>
+
+
+
+</body>
+</html>

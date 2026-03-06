@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Solicitud Licencias - DIRCOMERCIALACS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+
+    <h1 class="logo">LACS</h1>
+
+    <div class="header-actions">
+
+      <button onclick="window.location.href='home.html'" class="btn btn-primary">
+        Inicio
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+
+<main class="main">
+
+  <div class="container">
+
+    <!-- TITULO -->
+
+    <section class="solicitud-header">
+
+      <h2>
+            SOLICITUD LICENCIAS UNINORTE - DIRCOMERCIALACS
+      </h2>
+
+      <p>
+        En este apartado se debe diligenciar el formulario con la información
+        necesaria para realizar correctamente la solicitud de licencias.
+        Por favor complete todos los campos requeridos para que la solicitud
+        pueda ser procesada adecuadamente.
+      </p>
+
+    </section>
+
+
+    <!-- FORMULARIO -->
+
+    <section class="card solicitud-form-container">
+
+      <h3>Formulario de solicitud</h3>
+
+      <form id="formSolicitud">
+
+        <div class="form-grid">
+
+
+          <div class="form-field">
+            <label>1. NOMBRE DEL SOFTWARE / PRODUCTO / SERVICIO</label>
+            <input id="software" required>
+          </div>
+
+
+          <div class="form-field">
+            <label>2. LINK DE ACCESO</label>
+            <input id="link" required>
+          </div>
+
+
+          <div class="form-field">
+            <label>3. COSTO - MONEDA</label>
+            <input id="costo" required>
+          </div>
+
+
+          <div class="form-field">
+            <label>4. CANTIDAD DE LICENCIAS REQUERIDAS</label>
+            <input id="licencias" type="number" required>
+          </div>
+
+
+          <div class="form-field full">
+            <label>5. JUSTIFICACIÓN</label>
+            <textarea id="justificacion" required></textarea>
+          </div>
+
+
+          <div class="form-field">
+            <label>6. ACTIVO EN EL CUAL SE INSTALARÁ</label>
+            <input id="activo" required>
+          </div>
+
+
+          <div class="form-field">
+            <label>7. NOMBRE DEL RESPONSABLE DE LA LICENCIA</label>
+            <input id="responsable" required>
+          </div>
+
+
+          <div class="form-field">
+            <label>8. PERIODO PARA EL CUAL SE SOLICITA EL PRODUCTO</label>
+            <input id="periodo" required>
+          </div>
+
+
+          <div class="form-field">
+            <label>9. COORDINACIÓN O CENTRO DE COSTOS</label>
+            <input id="centroCosto" required>
+          </div>
+
+
+          <div class="form-field">
+            <label>10. NOMBRE DE SU JEFE INMEDIATO</label>
+            <input id="jefe" required>
+          </div>
+
+
+        </div>
+
+
+        <div class="form-buttons">
+
+          <button type="submit" class="btn btn-primary">
+            Enviar solicitud
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<script>
+
+document.getElementById("formSolicitud")
+.addEventListener("submit", async (e) => {
+
+  e.preventDefault();
+
+  const data = {
+
+    software: document.getElementById("software").value,
+    link: document.getElementById("link").value,
+    costo: document.getElementById("costo").value,
+    licencias: document.getElementById("licencias").value,
+    justificacion: document.getElementById("justificacion").value,
+    activo: document.getElementById("activo").value,
+    responsable: document.getElementById("responsable").value,
+    periodo: document.getElementById("periodo").value,
+    centroCosto: document.getElementById("centroCosto").value,
+    jefe: document.getElementById("jefe").value
+
+  };
+
+  try {
+
+    await fetch("/api/solicitud",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    alert("Solicitud enviada correctamente");
+
+    document.getElementById("formSolicitud").reset();
+
+  } catch (error) {
+
+    alert("Error enviando la solicitud");
+
+  }
+
+});
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+/* HEADER */
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--color-dark);
+  color: white;
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+}
+
+.header-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.header-center {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  max-width: 600px;
+}
+
+.header-center input,
+.header-center select {
+  flex: 1;
+}
+
+/* MAIN */
+
+.main {
+  margin-top: 110px;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* CARD */
+
+.card {
+  background: var(--color-card);
+  padding: 25px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+}
+
+/* GRID FORM */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.form-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* TABLE CONTAINER */
+
+.table-container {
+  overflow-x: auto;
+}

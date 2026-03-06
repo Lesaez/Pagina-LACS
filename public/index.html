@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inventario Activos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+
+    <h1 class="logo">Inventario Activos</h1>
+
+    <div class="search-box">
+      <span class="search-icon">🔎</span>
+      <input 
+        type="text" 
+        id="buscador"
+        placeholder="Buscar activo por nombre, placa o ubicación..." 
+      />
+    </div>
+
+    <div class="header-filters">
+      <select id="ordenGeneral" class="select-modern">
+        <option value="">Ordenar por...</option>
+
+        <optgroup label="Nombre">
+          <option value="nombre_az">Nombre A → Z</option>
+          <option value="nombre_za">Nombre Z → A</option>
+        </optgroup>
+
+        <optgroup label="Placa">
+          <option value="placa_asc">Placa ↑</option>
+          <option value="placa_desc">Placa ↓</option>
+        </optgroup>
+
+        <optgroup label="Valor">
+          <option value="valor_asc">Menor valor</option>
+          <option value="valor_desc">Mayor valor</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="header-actions">
+
+      <button id="btnVerTipos" class="btn btn-primary">
+        Ver Tipos
+      </button>
+
+      <button id="btnNuevo" class="btn btn-primary">
+        + Añadir Activo
+      </button>
+
+      <!-- 🔥 BOTÓN EXPORTAR EXCEL -->
+      <button id="btnExportar" class="btn btn-primary">
+        Exportar Excel
+      </button>
+
+      <button onclick="window.location.href='home.html'" class="btn btn-primary">
+        Inicio
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+<main class="main">
+  <div class="container">
+
+    <div id="filtroActivoBox" class="filtro-activo hidden">
+      <span id="textoFiltroActivo"></span>
+      <button id="btnQuitarFiltro" class="btn btn-secondary">
+        Mostrar todos
+      </button>
+    </div>
+
+    <section class="card">
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Placa</th>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Ubicación</th>
+              <th>Valor</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- ================= MODAL EDITAR ================= -->
+<div id="modalEditar" class="modal">
+  <div class="modal-content modal-form">
+
+    <div class="modal-header">
+      <h3 id="tituloModal">Nuevo Activo</h3>
+      <button id="btnCerrarEditar" class="btn btn-danger">X</button>
+    </div>
+
+    <form id="inventarioForm">
+      <div class="form-grid">
+
+        <input id="ETIQUETA_ORIGINAL" placeholder="Etiqueta Original" required />
+        <input id="PLACA" type="number" placeholder="Placa" required />
+        <input id="NOMBRE_DEL_ACTIVO" placeholder="Nombre del Activo" required />
+
+        <select id="TIPO_ID">
+          <option value="">Seleccionar tipo...</option>
+        </select>
+
+        <input id="UBICACION" placeholder="Ubicación" />
+        <input id="NIT_RESP" placeholder="NIT Responsable" />
+        <input id="NOMBRE_RESP" placeholder="Nombre Responsable" />
+        <input id="NIT_ADMINISTRADOR" placeholder="NIT Administrador" />
+        <input id="ADMINISTRADOR" placeholder="Administrador" />
+        <input id="FECHA_ENTRADA" type="date" />
+        <input id="ORGANIZ" placeholder="Organización" />
+        <input id="NOMBRE_CCOSTO" placeholder="Centro de Costo" />
+        <input id="MARCA" placeholder="Marca" />
+        <input id="MODELO" placeholder="Modelo" />
+        <input id="SERIE" placeholder="Serie" />
+        <input id="VALOR" type="number" placeholder="Valor" />
+
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<!-- ================= MODAL TIPOS ================= -->
+<div id="modalTipos" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Tipos de Activo</h3>
+      <button id="btnCerrarTipos" class="btn btn-danger">X</button>
+    </div>
+    <div id="listaTipos"></div>
+  </div>
+</div>
+
+<!-- ================= MODAL DETALLE ================= -->
+<div id="modalDetalle" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Detalle del Activo</h3>
+      <button id="btnCerrarDetalle" class="btn btn-danger">X</button>
+    </div>
+    <div id="detalleContenido" class="detalle-grid"></div>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>

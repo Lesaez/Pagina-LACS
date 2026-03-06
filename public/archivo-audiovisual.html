@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Unidad de Archivo Audiovisual</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+
+</head>
+
+
+<body>
+
+<header class="header">
+<div class="header-container">
+
+<h1 class="logo">LACS</h1>
+
+<div class="header-actions">
+
+<button onclick="window.location.href='home.html'" class="btn btn-primary">
+Inicio
+</button>
+
+</div>
+
+</div>
+</header>
+
+
+
+<main class="main">
+
+<div class="container">
+
+<section class="solicitud-header">
+
+<h2>Unidad de Archivo Audiovisual</h2>
+
+<p>
+En este apartado podrá realizar solicitudes a la Unidad de Archivo Audiovisual.
+Por favor complete la siguiente información para poder gestionar correctamente su solicitud.
+</p>
+
+</section>
+
+
+
+<section class="card solicitud-form-container">
+
+<h3>Formulario de solicitud</h3>
+
+<form id="formArchivo">
+
+<div class="form-grid">
+
+<div class="form-field">
+<label>Nombre del Proyecto</label>
+<input type="text" required>
+</div>
+
+<div class="form-field">
+<label>Realizador del proyecto</label>
+<input type="text" required>
+</div>
+
+<div class="form-field">
+<label>Datos de contacto</label>
+<input type="text" placeholder="Correo o teléfono" required>
+</div>
+
+<div class="form-field">
+<label>Aprobador de contenido - cliente</label>
+<input type="text" required>
+</div>
+
+<div class="form-field">
+<label>Fecha de entrega del proyecto</label>
+<input type="date" required>
+</div>
+
+<div class="form-field">
+<label>Ventana de exhibición</label>
+<input type="text" placeholder="Ej: redes sociales, evento, web institucional" required>
+</div>
+
+<div class="form-field full">
+<label>Descripción de la necesidad</label>
+<textarea required></textarea>
+</div>
+
+<div class="form-field full">
+<label>Descripción técnica del entregable (video - foto)</label>
+<textarea placeholder="Duración, formato, resolución, tipo de pieza, etc." required></textarea>
+</div>
+
+</div>
+
+
+
+<div style="margin-top:30px">
+
+<button type="submit" class="btn btn-primary">
+Enviar solicitud
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+
+
+<section style="margin-top:30px">
+
+<p style="font-size:14px; color:#475569">
+
+<strong>Importante:</strong> Archivo Audiovisual procesará su solicitud y contará con 
+<strong>15 días hábiles</strong> para entregar una respuesta.
+
+</p>
+
+</section>
+
+
+</div>
+
+</main>
+
+<script>
+
+document.getElementById("formArchivo").addEventListener("submit", async (e) => {
+
+e.preventDefault();
+
+const data = {
+proyecto: document.querySelectorAll("input")[0].value,
+realizador: document.querySelectorAll("input")[1].value,
+contacto: document.querySelectorAll("input")[2].value,
+aprobador: document.querySelectorAll("input")[3].value,
+fecha: document.querySelectorAll("input")[4].value,
+ventana: document.querySelectorAll("input")[5].value,
+descripcion: document.querySelectorAll("textarea")[0].value,
+descripcionTecnica: document.querySelectorAll("textarea")[1].value
+};
+
+const res = await fetch("/api/archivo-audiovisual",{
+
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify(data)
+
+});
+
+if(res.ok){
+
+alert("Solicitud enviada correctamente");
+
+document.getElementById("formArchivo").reset();
+
+}else{
+
+alert("Error enviando solicitud");
+
+}
+
+});
+
+</script>
+</body>
+</html>
