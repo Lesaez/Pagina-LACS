@@ -1,0 +1,86 @@
+/* ================= BOTON BASE ================= */
+
+.btn{
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:10px 16px;
+
+  font-size:14px;
+  font-weight:500;
+
+  border:none;
+  border-radius:var(--radius-md);
+
+  cursor:pointer;
+
+  transition:all .2s ease;
+
+  text-decoration:none;
+
+}
+
+/* ================= BOTON PRIMARIO ================= */
+
+.btn-primary{
+
+  background:var(--color-primary);
+  color:white;
+
+}
+
+.btn-primary:hover{
+
+  background:var(--color-primary-hover);
+
+}
+
+/* ================= BOTON PELIGRO ================= */
+
+.btn-danger{
+
+  background:var(--color-danger);
+  color:white;
+
+}
+
+.btn-danger:hover{
+
+  background:var(--color-danger-hover);
+
+}
+
+/* ================= BOTON SECUNDARIO ================= */
+
+.btn-secondary{
+
+  background:#e2e8f0;
+  color:#0f172a;
+
+}
+
+.btn-secondary:hover{
+
+  background:#cbd5e1;
+
+}
+
+/* ================= BOTON PEQUEÑO ================= */
+
+.btn-sm{
+
+  padding:6px 12px;
+  font-size:13px;
+
+}
+
+/* ================= BOTON GRANDE ================= */
+
+.btn-lg{
+
+  padding:12px 20px;
+  font-size:15px;
+
+}

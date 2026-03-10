@@ -1,0 +1,106 @@
+/* ================= MODAL ================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  width: 90%;
+  max-width: 750px;
+  padding: 25px;
+  border-radius: 18px;
+  animation: fadeIn .2s ease;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ================= GRID MODAL ================= */
+
+.modal-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+}
+
+.modal-grid div {
+  background: #f1f5f9;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* ================= MODAL FORM ================= */
+
+.modal-form {
+  max-width: 900px;
+  padding: 30px;
+}
+
+/* ================= SCROLL MODAL TIPOS ================= */
+
+#modalTipos .modal-content {
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#modalTipos #listaTipos {
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Scroll estilizado */
+
+#modalTipos #listaTipos::-webkit-scrollbar {
+  width: 8px;
+}
+
+#modalTipos #listaTipos::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 10px;
+}
+
+/* ================= DETALLE GRID ================= */
+
+.detalle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.detalle-grid div {
+  background: #f1f5f9;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* ================= ANIMACION ================= */
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: scale(.95); 
+  }
+
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}

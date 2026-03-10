@@ -7,13 +7,9 @@
 <title>Registro Horas Extra - LACS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="css/variables.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/main.css">
 
 </head>
-
 
 <body>
 
@@ -34,10 +30,11 @@ Inicio
 </header>
 
 
-
 <main class="main">
 
 <div class="container">
+
+<!-- TITULO -->
 
 <section class="solicitud-header">
 
@@ -50,50 +47,55 @@ En este apartado los colaboradores podrán registrar las horas extra realizadas 
 </section>
 
 
+<!-- FORMULARIO -->
+
+<section class="card">
+
+<h3>Datos del trabajador</h3>
 
 <form id="formHoras">
 
-<!-- DATOS -->
+<div class="form-grid">
 
-<div class="datos-grid">
-
-<div class="datos-box">
-
-<h3>DATOS DEL TRABAJADOR</h3>
-
+<div class="form-field">
 <label>Nombre y Apellidos</label>
 <input type="text" id="trabajador">
+</div>
 
+<div class="form-field">
 <label>Documento de Identidad</label>
 <input type="text" id="documento">
+</div>
 
+<div class="form-field">
 <label>Centro de Costo</label>
 <input type="text" id="centroCosto">
+</div>
 
 </div>
 
 
-<div class="datos-box">
+<h3 style="margin-top:25px">Datos de quien autoriza</h3>
 
-<h3>DATOS DE QUIEN AUTORIZA</h3>
+<div class="form-grid">
 
+<div class="form-field">
 <label>Vo.Bo. de quien autoriza</label>
 <input type="text" id="autoriza">
+</div>
 
+<div class="form-field">
 <label>Cargo</label>
 <input type="text" id="cargo">
-
 </div>
 
 </div>
 
 
 
-<!-- TABLA HORAS -->
+<h3 style="margin-top:30px">Registro de horas</h3>
 
-<h3 style="margin-top:20px">Registro de horas</h3>
-
-<table class="horas-table">
+<table class="table">
 
 <thead>
 
@@ -119,9 +121,11 @@ En este apartado los colaboradores podrán registrar las horas extra realizadas 
 <td><input type="time"></td>
 
 <td>
+
 <button type="button" class="btn btn-danger eliminarFila">
 X
 </button>
+
 </td>
 
 </tr>
@@ -131,13 +135,11 @@ X
 </table>
 
 
+<div class="form-buttons">
+
 <button type="button" id="agregarFila" class="btn btn-primary">
 Añadir fila
 </button>
-
-
-
-<div style="margin-top:30px">
 
 <button type="submit" class="btn btn-primary">
 Enviar registro
@@ -145,8 +147,9 @@ Enviar registro
 
 </div>
 
-
 </form>
+
+</section>
 
 </div>
 

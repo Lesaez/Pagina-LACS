@@ -1,0 +1,91 @@
+/* ================= TABLAS BASE ================= */
+
+table{
+
+  width:100%;
+  border-collapse:collapse;
+
+}
+
+/* header */
+
+th{
+
+  background: var(--color-dark);
+  color:white;
+
+  padding:12px;
+
+}
+
+/* celdas */
+
+td{
+
+  padding:10px;
+
+  border-bottom:1px solid var(--color-border);
+
+}
+
+/* filas */
+
+tbody tr{
+
+  cursor:pointer;
+  transition:background .2s;
+
+}
+
+tbody tr:hover{
+
+  background:#eef2f7;
+
+}
+
+/* botones en tabla */
+
+td:last-child{
+
+  text-align:center;
+
+}
+
+td:last-child .btn{
+
+  display:block;
+  margin:6px auto;
+
+}
+
+/* ================= INPUTS EN TABLAS ================= */
+
+.table input{
+
+  width:100%;
+
+  padding:12px 14px;
+
+  border-radius:var(--radius-md);
+
+  border:1px solid var(--color-border);
+
+  font-size:14px;
+
+  background:white;
+
+  transition:.2s;
+
+}
+
+/* focus igual que los formularios */
+
+.table input:focus{
+
+  border-color:var(--color-primary);
+
+  box-shadow:0 0 0 3px rgba(59,130,246,.15);
+
+  outline:none;
+
+}

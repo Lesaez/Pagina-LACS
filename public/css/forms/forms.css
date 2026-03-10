@@ -1,0 +1,189 @@
+/* ================= FORM GRID ================= */
+
+.form-grid{
+
+  display:grid;
+
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+  gap:25px;
+
+  margin-top:20px;
+
+}
+/* ================= FORM BOX ================= */
+
+.form-box{
+  background:#f8fafc;
+  border:1px solid var(--color-border);
+  border-radius:12px;
+  padding:18px;
+}
+
+/* TITULO DEL GRUPO */
+
+.form-box h3{
+  font-size:14px;
+  margin-bottom:10px;
+  color:var(--color-dark);
+}
+
+/* ================= INPUTS ================= */
+
+.form-field{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:6px;
+
+}
+
+.form-field label{
+
+  font-size:13px;
+
+  font-weight:600;
+
+  color:#0f172a;
+
+}
+
+.form-field input,
+.form-field textarea{
+
+  padding:12px 14px;
+
+  border-radius:8px;
+
+  border:1px solid var(--color-border);
+
+  font-size:14px;
+
+  transition:.2s;
+
+}
+
+.form-field textarea{
+
+  min-height:90px;
+
+}
+
+.form-field input:focus,
+.form-field textarea:focus{
+
+  border-color:var(--color-primary);
+
+  box-shadow:0 0 0 3px rgba(59,130,246,.15);
+
+  outline:none;
+
+}
+/* ================= BOTONES FORM ================= */
+
+.form-buttons{
+  display:flex;
+  gap:15px;
+  margin-top:25px;
+}
+
+/* ================= BUSCADOR ================= */
+
+.search-box{
+  position:relative;
+  width:420px;
+  max-width:100%;
+}
+
+.search-box input{
+
+  width:100%;
+
+  padding:12px 14px 12px 38px;
+
+  border-radius:var(--radius-md);
+
+  border:1px solid var(--color-border);
+
+  font-size:14px;
+
+  background:white;
+
+  transition:.2s;
+
+}
+
+/* focus igual que el resto de inputs */
+
+.search-box input:focus{
+
+  border-color:var(--color-primary);
+
+  box-shadow:0 0 0 3px rgba(59,130,246,.15);
+
+  outline:none;
+
+}
+
+/* icono */
+
+.search-icon{
+
+  position:absolute;
+
+  left:12px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  font-size:14px;
+
+  opacity:.6;
+
+  pointer-events:none;
+
+}
+
+/* ================= SELECT MODERNO ================= */
+
+.select-modern{
+
+  height:40px;
+
+  padding:0 12px;
+
+  border-radius:var(--radius-md);
+
+  border:1px solid var(--color-border);
+
+  font-size:14px;
+
+  background:white;
+
+  cursor:pointer;
+
+  transition:.2s;
+
+}
+
+/* focus igual que inputs */
+
+.select-modern:focus{
+
+  border-color:var(--color-primary);
+
+  box-shadow:0 0 0 3px rgba(59,130,246,.15);
+
+  outline:none;
+
+}
+
+/* hover */
+
+.select-modern:hover{
+
+  border-color:var(--color-muted);
+
+}

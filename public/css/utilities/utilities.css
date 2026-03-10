@@ -1,0 +1,32 @@
+.hidden {
+  display: none;
+}
+
+.filtro-activo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+  padding: 10px 15px;
+  background: #e0f2fe;
+  border-radius: 10px;
+}
+
+.filtro-activo span {
+  font-weight: 600;
+  color: #0369a1;
+}
+
+.table-container{
+  overflow-x:auto;
+}
+
+.info-text{
+
+  margin-top:25px;
+
+  font-size:14px;
+
+  color:#475569;
+
+}
