@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
 
     await transporter.sendMail({
       from: `"Solicitud Licencias LACS" <${process.env.EMAIL_USER}>`,
-      to: "cbarriosm@uninorte.edu.co, lesaez@uninorte.edu.co",
+      to: "cbarriosm@uninorte.edu.co",
       subject: "Nueva solicitud de licencia",
       html
     });

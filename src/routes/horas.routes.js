@@ -76,7 +76,7 @@ pass:process.env.EMAIL_PASS
 await transporter.sendMail({
 
 from:process.env.EMAIL_USER,
-to:"cbarriosm@uninorte.edu.co, lesaez@uninorte.edu.co",
+to:"cbarriosm@uninorte.edu.co",
 subject:"Registro de horas extra LACS",
 html
 

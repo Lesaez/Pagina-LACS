@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Administrar Usuarios</title>
+<link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+<header class="header">
+<div class="header-container">
+
+<h1 class="logo">Panel Admin</h1>
+
+<div class="header-actions">
+
+<button onclick="window.location.href='home.html'" class="btn btn-primary">
+Inicio
+</button>
+
+</div>
+
+</div>
+</header>
+
+
+<main class="main">
+
+<div class="container">
+
+<section class="card">
+
+<h2>Usuarios registrados</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Nombre</th>
+<th>Email</th>
+<th>Rol</th>
+<th>Cambiar Rol</th>
+</tr>
+</thead>
+
+<tbody id="tablaUsuarios">
+</tbody>
+
+</table>
+
+</section>
+
+</div>
+
+</main>
+
+
+<script>
+
+async function cargarUsuarios(){
+
+const res = await fetch("/api/users");
+
+const usuarios = await res.json();
+
+const tabla = document.getElementById("tablaUsuarios");
+
+tabla.innerHTML = "";
+
+usuarios.forEach(u => {
+
+const fila = document.createElement("tr");
+
+fila.innerHTML = `
+<td>${u.id}</td>
+<td>${u.nombre}</td>
+<td>${u.email}</td>
+<td>${u.role}</td>
+<td>
+<select onchange="cambiarRol(${u.id}, this.value)">
+<option value="usuario" ${u.role==="usuario"?"selected":""}>Usuario</option>
+<option value="admin" ${u.role==="admin"?"selected":""}>Admin</option>
+</select>
+</td>
+`;
+
+tabla.appendChild(fila);
+
+});
+
+}
+
+
+async function cambiarRol(id, role){
+
+await fetch(`/api/users/${id}/role`,{
+
+method:"PUT",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({role})
+
+});
+
+alert("Rol actualizado");
+
+cargarUsuarios();
+
+}
+
+
+cargarUsuarios();
+
+</script>
+
+</body>
+
+</html>

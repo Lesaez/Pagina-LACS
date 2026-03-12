@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Login - LACS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+<main class="main">
+
+<div class="container">
+
+<section class="card" style="max-width:500px;margin:auto">
+
+<h2 style="text-align:center">Ingreso al sistema LACS</h2>
+
+<form id="loginForm">
+
+<div class="form-grid">
+
+<div class="form-field">
+<label>Correo institucional</label>
+<input type="email" id="email" required>
+</div>
+
+<div class="form-field">
+<label>Contraseña</label>
+<input type="password" id="password" required>
+</div>
+
+</div>
+
+<div class="form-buttons" style="justify-content:center">
+
+<button type="submit" class="btn btn-primary">
+Ingresar
+</button>
+
+</div>
+
+</form>
+
+<p style="text-align:center;margin-top:15px">
+
+¿No tienes cuenta?
+<a href="register.html">Regístrate</a>
+
+</p>
+
+</section>
+
+</div>
+
+</main>
+
+
+<script>
+
+document.getElementById("loginForm").addEventListener("submit", async (e)=>{
+
+e.preventDefault();
+
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+
+try{
+
+const res = await fetch("/api/login",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({email,password})
+
+});
+
+const data = await res.json();
+
+if(res.ok){
+
+/* guardar usuario completo */
+localStorage.setItem("usuario", JSON.stringify(data.user));
+
+/* guardar rol */
+localStorage.setItem("role", data.user.role);
+
+/* guardar email */
+localStorage.setItem("email", email);
+
+/* redirigir */
+window.location.href="home.html";
+
+}else{
+
+alert(data.error || "Error iniciando sesión");
+
+}
+
+}catch(error){
+
+console.error(error);
+alert("Error conectando con el servidor");
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

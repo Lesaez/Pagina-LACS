@@ -8,12 +8,24 @@
 </head>
 
 <body>
+
 <header class="header">
   <div class="header-container">
 
     <h1 class="logo">LACS</h1>
 
+    <!-- USUARIO LOGUEADO -->
+    <div class="header-user">
+      <span id="userEmail"></span>
+    </div>
+
+    <!-- ACCIONES -->
     <div class="header-actions">
+
+      <button onclick="logout()" class="btn btn-primary">
+        Cerrar sesión
+      </button>
+
     </div>
 
   </div>
@@ -22,8 +34,18 @@
 <main class="home-main">
   <div class="home-container">
 
+    <!-- ADMIN PANEL -->
+    <button
+      id="btnAdmin"
+      class="btn btn-primary home-btn"
+      onclick="window.location.href='admin-users.html'">
+      ADMINISTRAR<br>
+      USUARIOS
+    </button>
+
     <!-- FILA 1 -->
     <button
+      id="btnInventario"
       class="btn btn-primary home-btn"
       onclick="window.location.href='index.html'">
       INVENTARIO ACTIVOS LACS
@@ -33,7 +55,7 @@
       class="btn btn-primary home-btn"
       onclick="window.location.href='solicitud.html'">
       SOLICITUD LICENCIAS<br>
-      UNINORTE - DIRCOMERCIALACS
+      UNINORTE - DIRCOMLACS
     </button>
 
     <button
@@ -54,10 +76,55 @@
     <button
       class="btn btn-primary home-btn"
       onclick="window.location.href='reporte-danos.html'">
-     REPORTE DE DAÑOS<br>
+      REPORTE DE DAÑOS<br>
       ACTIVOS DEL LABORATORIO
     </button>
+
   </div>
 </main>
+
+
+<script>
+
+/* ================= MOSTRAR USUARIO ================= */
+
+const email = localStorage.getItem("email");
+const role = localStorage.getItem("role");
+
+if(email){
+  document.getElementById("userEmail").textContent = email;
+}
+
+
+/* ================= CONTROL DE ROLES ================= */
+
+/* ocultar panel admin si no es admin */
+
+if(role !== "admin"){
+  document.getElementById("btnAdmin").style.display = "none";
+}
+
+
+/* ocultar inventario si no es admin */
+
+if(role !== "admin"){
+  document.getElementById("btnInventario").style.display = "none";
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+  localStorage.removeItem("usuario");
+  localStorage.removeItem("role");
+  localStorage.removeItem("email");
+
+  window.location.href = "login.html";
+
+}
+
+</script>
+
 </body>
 </html>

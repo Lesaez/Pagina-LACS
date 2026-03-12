@@ -30,7 +30,7 @@ app.use("/api/reporte-danos", reporteDaniosRoutes);
 // ================= PAGINA INICIAL =================
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/home.html"));
+  res.sendFile(path.join(__dirname, "../public/login.html"));
 });
 
 // ================= STATIC =================
@@ -42,3 +42,15 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.use(errorHandler);
 
 module.exports = app;
+
+const registerRoutes = require("./routes/register");
+
+app.use("/api", registerRoutes);
+
+const loginRoutes = require("./routes/login");
+
+app.use("/api", loginRoutes);
+
+const userRoutes = require("./routes/users");
+
+app.use("/api", userRoutes);
