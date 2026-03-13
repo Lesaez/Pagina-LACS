@@ -86,29 +86,32 @@
 
 <script>
 
-/* ================= MOSTRAR USUARIO ================= */
+/* ================= OBTENER USUARIO ================= */
 
-const email = localStorage.getItem("email");
-const role = localStorage.getItem("role");
+const user = JSON.parse(localStorage.getItem("user"));
 
-if(email){
-  document.getElementById("userEmail").textContent = email;
+if(!user){
+
+  /* si no hay sesión volver al login */
+
+  window.location.href = "login.html";
+
 }
+
+
+/* ================= MOSTRAR EMAIL ================= */
+
+document.getElementById("userEmail").textContent = user.email;
 
 
 /* ================= CONTROL DE ROLES ================= */
 
-/* ocultar panel admin si no es admin */
+if(user.role !== "admin"){
 
-if(role !== "admin"){
   document.getElementById("btnAdmin").style.display = "none";
-}
 
-
-/* ocultar inventario si no es admin */
-
-if(role !== "admin"){
   document.getElementById("btnInventario").style.display = "none";
+
 }
 
 
@@ -116,9 +119,7 @@ if(role !== "admin"){
 
 function logout(){
 
-  localStorage.removeItem("usuario");
-  localStorage.removeItem("role");
-  localStorage.removeItem("email");
+  localStorage.removeItem("user");
 
   window.location.href = "login.html";
 

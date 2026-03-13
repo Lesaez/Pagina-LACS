@@ -1,0 +1,146 @@
+/* ================= AUTH CARD ================= */
+
+.auth-card{
+
+animation:fadeUp .4s ease;
+max-width:520px;
+margin:auto;
+
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* ================= INPUT PASSWORD ================= */
+
+.input-password{
+
+display:flex;
+align-items:center;
+
+border:1px solid #cbd5e1;
+border-radius:10px;
+
+background:white;
+
+overflow:hidden;
+
+transition:.2s;
+
+}
+
+.input-password:focus-within{
+border-color:#3b82f6;
+box-shadow:0 0 0 2px rgba(59,130,246,.15);
+}
+
+
+/* ================= INPUT ================= */
+
+.input-password input{
+
+flex:1;
+
+border:none;
+outline:none;
+
+padding:10px 12px;
+
+font-size:14px;
+
+background:transparent;
+
+}
+
+
+/* ================= BOTON OJO ================= */
+
+.password-toggle{
+
+width:42px;
+
+border:none;
+background:transparent;
+
+cursor:pointer;
+
+font-size:16px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+color:#64748b;
+
+transition:.2s;
+
+}
+
+.password-toggle:hover{
+
+background:#f1f5f9;
+
+}
+
+
+/* ================= VALIDACIONES ================= */
+
+.input-error{
+
+border:2px solid #dc2626 !important;
+background:#fee2e2;
+
+}
+
+.input-success{
+
+border:2px solid #16a34a !important;
+background:#dcfce7;
+
+}
+
+
+/* ================= MENSAJE ERROR ================= */
+
+.error-msg{
+
+color:#dc2626;
+font-size:12px;
+margin-top:4px;
+
+}
+
+
+/* ================= PASSWORD STRENGTH ================= */
+
+.password-strength{
+
+font-size:12px;
+margin-top:6px;
+
+}
+
+.register-page{
+
+min-height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:var(--color-bg);
+
+padding:40px 20px;
+
+}
