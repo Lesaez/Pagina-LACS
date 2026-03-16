@@ -22,6 +22,7 @@ transform:translateY(0);
 
 }
 
+
 /* ================= INPUT PASSWORD ================= */
 
 .input-password{
@@ -69,19 +70,16 @@ background:transparent;
 .password-toggle{
 
 width:42px;
+height:100%;
 
 border:none;
 background:transparent;
 
 cursor:pointer;
 
-font-size:16px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
-color:#64748b;
 
 transition:.2s;
 
@@ -93,20 +91,60 @@ background:#f1f5f9;
 
 }
 
+.password-toggle img{
 
-/* ================= VALIDACIONES ================= */
+width:45px;
+height:45px;
 
-.input-error{
+pointer-events:none;
 
-border:2px solid #dc2626 !important;
-background:#fee2e2;
+opacity:.7;
+
+transition:.2s;
 
 }
 
-.input-success{
+.password-toggle:hover img{
 
-border:2px solid #16a34a !important;
-background:#dcfce7;
+opacity:1;
+
+}
+
+
+/* ================= PASSWORD STRENGTH ================= */
+
+.password-strength-container{
+
+margin-top:8px;
+
+display:none; /* oculto al inicio */
+
+align-items:center;
+gap:10px;
+
+}
+
+.password-strength-bar{
+
+height:6px;
+width:0;
+
+background:#ddd;
+
+border-radius:10px;
+
+flex:1;
+
+transition:.35s ease;
+
+}
+
+.password-strength-text{
+
+font-size:12px;
+color:#64748b;
+
+min-width:70px;
 
 }
 
@@ -122,14 +160,7 @@ margin-top:4px;
 }
 
 
-/* ================= PASSWORD STRENGTH ================= */
-
-.password-strength{
-
-font-size:12px;
-margin-top:6px;
-
-}
+/* ================= REGISTER PAGE ================= */
 
 .register-page{
 
