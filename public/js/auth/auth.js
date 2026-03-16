@@ -26,3 +26,20 @@ icon.src = "assets/assets/eye.png";
 }
 
 }
+
+
+/* ================= VALIDACIONES INPUT ================= */
+
+function setError(input,message){
+
+input.classList.remove("input-success");
+input.classList.add("input-error");
+
+}
+
+function setSuccess(input){
+
+input.classList.remove("input-error");
+input.classList.add("input-success");
+
+}
