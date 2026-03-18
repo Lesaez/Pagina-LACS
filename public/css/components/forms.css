@@ -1,0 +1,66 @@
+/* ================= GRID ================= */
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.form-field.full{
+  grid-column:1 / -1;
+}
+
+/* SOLO login y register */
+.auth-card .form-grid{
+  grid-template-columns:1fr;
+}
+
+/* ================= CAMPOS ================= */
+
+.form-field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.form-field label{
+  font-size:12px;
+  font-weight:600;
+  color:#334155;
+}
+
+/* ================= INPUTS ================= */
+
+.form-field input,
+.form-field textarea{
+
+  width:100%;
+  padding:12px 14px;
+
+  border-radius:10px;
+  border:1px solid #cbd5e1;
+
+  font-size:14px;
+  background:#fff;
+
+  transition:.2s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus{
+
+  border-color:#3b82f6;
+  box-shadow:0 0 0 2px rgba(59,130,246,.15);
+
+  outline:none;
+}
+
+.form-buttons{
+  display:flex;
+  gap: 12px;
+  justify-content:flex-start;
+}
+
+.form-buttons button{
+  margin-top:25px; 
+}

@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-
 <meta charset="UTF-8">
 <title>Registro de Usuario - LACS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,6 @@
 <link rel="stylesheet" href="css/components/auth.css">
 
 </head>
-
 
 <body class="register-page">
 
@@ -22,132 +20,85 @@
 <h2>Registro de Usuario</h2>
 
 <p>
-Regístrese con su correo institucional para acceder al sistema LACS.
-Solo se permiten cuentas con dominio <b>@uninorte.edu.co</b>.
+Regístrese con su correo institucional.
+<b>@uninorte.edu.co</b>
 </p>
-
 
 <form id="registerForm">
 
 <div class="form-grid">
-
-
-<!-- NOMBRE -->
 
 <div class="form-field">
 <label>Nombre completo</label>
 <input type="text" id="nombre" required>
 </div>
 
-
-<!-- TELEFONO -->
-
 <div class="form-field">
 <label>Teléfono</label>
 <input type="text" id="telefono" required>
 </div>
-
-
-<!-- EMAIL -->
 
 <div class="form-field">
 <label>Correo institucional</label>
 <input type="email" id="email" required>
 </div>
 
-
-<!-- PASSWORD -->
-
 <div class="form-field">
-
 <label>Contraseña</label>
 
 <div class="input-password">
-
 <input type="password" id="password" required>
 
-<button
-type="button"
+<button type="button"
 class="password-toggle"
 onclick="togglePassword(this,'password')">
-
-<img src="assets/assets/eye.png" alt="ver contraseña">
-
+<img src="assets/assets/eye.png">
 </button>
 
 </div>
 
-
-<!-- BARRA SEGURIDAD -->
-
 <div class="password-strength-container">
-
 <div id="strengthBar" class="password-strength-bar"></div>
-
-<span id="strengthText" class="password-strength-text">
-Seguridad
-</span>
-
+<span id="strengthText">Seguridad</span>
 </div>
 
 </div>
-
-
-<!-- CONFIRM PASSWORD -->
 
 <div class="form-field">
-
 <label>Confirmar contraseña</label>
 
 <div class="input-password">
-
 <input type="password" id="confirmPassword" required>
 
-<button
-type="button"
+<button type="button"
 class="password-toggle"
 onclick="togglePassword(this,'confirmPassword')">
-
-<img src="assets/assets/eye.png" alt="ver contraseña">
-
+<img src="assets/assets/eye.png">
 </button>
 
 </div>
 
 </div>
 
-
 </div>
 
-
-<div class="form-buttons">
-
-<button type="submit" class="btn btn-primary">
-Registrarse
-</button>
-
+<div class="form-buttons" style="justify-content:center">
+<button type="submit" class="btn btn-primary">Registrarse</button>
 </div>
 
 </form>
 
-
 <p style="text-align:center;margin-top:20px">
-
-¿Ya tienes cuenta?
-<a href="login.html">Ingresar</a>
-
+¿Ya tienes cuenta? <a href="login.html">Ingresar</a>
 </p>
-
 
 </section>
 
 </div>
-
 
 <script src="js/auth/auth.js"></script>
 <script src="js/auth/password-strength.js"></script>
 <script src="js/register.js"></script>
 
 </body>
-
 </html>

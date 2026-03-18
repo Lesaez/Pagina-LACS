@@ -7,25 +7,21 @@
 <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body class="app-page">
 
 <header class="header">
   <div class="header-container">
 
     <h1 class="logo">LACS</h1>
 
-    <!-- USUARIO LOGUEADO -->
     <div class="header-user">
       <span id="userEmail"></span>
     </div>
 
-    <!-- ACCIONES -->
     <div class="header-actions">
-
       <button onclick="logout()" class="btn btn-primary">
         Cerrar sesión
       </button>
-
     </div>
 
   </div>
@@ -34,97 +30,46 @@
 <main class="home-main">
   <div class="home-container">
 
-    <!-- ADMIN PANEL -->
-    <button
-      id="btnAdmin"
-      class="btn btn-primary home-btn"
-      onclick="window.location.href='admin-users.html'">
-      ADMINISTRAR<br>
-      USUARIOS
+    <button class="home-btn" onclick="window.location.href='reporte-danos.html'">
+      <div><strong>Reporte de Daños<br>Laboratorio</strong></div>
     </button>
 
-    <!-- FILA 1 -->
-    <button
-      id="btnInventario"
-      class="btn btn-primary home-btn"
-      onclick="window.location.href='index.html'">
-      INVENTARIO ACTIVOS LACS
+    <button class="home-btn" onclick="window.location.href='archivo-audiovisual.html'">
+      <div><strong>Archivo<br>Audiovisual</strong></div>
     </button>
 
-    <button
-      class="btn btn-primary home-btn"
-      onclick="window.location.href='solicitud.html'">
-      SOLICITUD LICENCIAS<br>
-      UNINORTE - DIRCOMLACS
+    <button class="home-btn" onclick="window.location.href='solicitud.html'">
+      <div><strong>Solicitud Licencias<br>Uninorte - Dircom</strong></div>
     </button>
 
-    <button
-      class="btn btn-primary home-btn"
-      onclick="window.location.href='horas-extra.html'">
-      REGISTRO DE<br>
-      HORAS EXTRA LACS
+    <button class="home-btn" onclick="window.location.href='horas-extra.html'">
+      <div><strong>Registro<br>Horas Extra</strong></div>
     </button>
 
-    <!-- FILA 2 -->
-    <button
-      class="btn btn-primary home-btn"
-      onclick="window.location.href='archivo-audiovisual.html'">
-      UNIDAD DE ARCHIVO<br>
-      AUDIOVISUAL
+    <button class="home-btn" onclick="window.location.href='index.html'">
+      <div><strong>Inventario<br>Activos LACS</strong></div>
     </button>
 
-    <button
-      class="btn btn-primary home-btn"
-      onclick="window.location.href='reporte-danos.html'">
-      REPORTE DE DAÑOS<br>
-      ACTIVOS DEL LABORATORIO
+    <button class="home-btn" onclick="window.location.href='admin-users.html'">
+      <div><strong>Administrar<br>Usuarios</strong></div>
     </button>
 
   </div>
 </main>
 
-
 <script>
-
-/* ================= OBTENER USUARIO ================= */
-
 const user = JSON.parse(localStorage.getItem("user"));
 
 if(!user){
-
-  /* si no hay sesión volver al login */
-
   window.location.href = "login.html";
-
 }
-
-
-/* ================= MOSTRAR EMAIL ================= */
 
 document.getElementById("userEmail").textContent = user.email;
 
-
-/* ================= CONTROL DE ROLES ================= */
-
-if(user.role !== "admin"){
-
-  document.getElementById("btnAdmin").style.display = "none";
-
-  document.getElementById("btnInventario").style.display = "none";
-
-}
-
-
-/* ================= LOGOUT ================= */
-
 function logout(){
-
   localStorage.removeItem("user");
-
   window.location.href = "login.html";
-
 }
-
 </script>
 
 </body>

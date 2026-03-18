@@ -1,91 +1,59 @@
 const express = require("express");
 const router = express.Router();
 const nodemailer = require("nodemailer");
+const db = require("../config/database");
+
+async function generarCodigo(tipo){
+  const [rows] = await db.query(
+    "SELECT numero FROM consecutivos WHERE tipo = ?",
+    [tipo]
+  );
+  let numero = rows[0].numero + 1;
+
+  await db.query(
+    "UPDATE consecutivos SET numero = ? WHERE tipo = ?",
+    [numero, tipo]
+  );
+
+  return tipo + String(numero).padStart(6, "0");
+}
 
 router.post("/", async (req,res)=>{
-
 try{
 
 const data = req.body;
-
-const transporter = nodemailer.createTransport({
-service:"gmail",
-auth:{
-user:process.env.EMAIL_USER,
-pass:process.env.EMAIL_PASS
-}
-});
+const codigo = await generarCodigo("ARC");
 
 const html = `
-<h2>Solicitud - Unidad de Archivo Audiovisual</h2>
+<h2>Solicitud Archivo Audiovisual</h2>
+<h3>Código: ${codigo}</h3>
 
-<table border="1" cellpadding="8" cellspacing="0">
-
-<tr>
-<th>Nombre del Proyecto</th>
-<td>${data.proyecto}</td>
-</tr>
-
-<tr>
-<th>Realizador del Proyecto</th>
-<td>${data.realizador}</td>
-</tr>
-
-<tr>
-<th>Datos de contacto</th>
-<td>${data.contacto}</td>
-</tr>
-
-<tr>
-<th>Aprobador de contenido</th>
-<td>${data.aprobador}</td>
-</tr>
-
-<tr>
-<th>Fecha de entrega</th>
-<td>${data.fecha}</td>
-</tr>
-
-<tr>
-<th>Ventana de exhibición</th>
-<td>${data.ventana}</td>
-</tr>
-
-<tr>
-<th>Descripción de la necesidad</th>
-<td>${data.descripcion}</td>
-</tr>
-
-<tr>
-<th>Descripción técnica</th>
-<td>${data.descripcionTecnica}</td>
-</tr>
-
-</table>
+<b>Proyecto:</b> ${data.proyecto}<br>
+<b>Realizador:</b> ${data.realizador}<br>
+<b>Contacto:</b> ${data.contacto}<br>
 `;
 
-await transporter.sendMail({
-
-from:process.env.EMAIL_USER,
-
-to:"cbarriosm@uninorte.edu.co",
-
-subject:"Nueva solicitud - Archivo Audiovisual",
-
-html
-
+const transporter = nodemailer.createTransport({
+  service:"gmail",
+  auth:{
+    user:process.env.EMAIL_USER,
+    pass:process.env.EMAIL_PASS
+  }
 });
 
-res.json({ok:true});
+await transporter.sendMail({
+  from:process.env.EMAIL_USER,
+  to:"cbarriosm@uninorte.edu.co",
+  subject:`Archivo ${codigo}`,
+  html
+});
+
+res.json({ok:true,codigo});
 
 }catch(err){
-
 console.error(err);
-
-res.status(500).json({error:"Error enviando correo"});
-
+res.status(500).json({error:"Error"});
 }
-
 });
 
 module.exports = router;

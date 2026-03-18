@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-
 <meta charset="UTF-8">
 <title>Login - LACS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,66 +17,49 @@
 
 <section class="card auth-card">
 
-<h2 style="text-align:center">Ingreso al sistema LACS</h2>
+<h2>Ingreso al sistema LACS</h2>
 
 <form id="loginForm">
 
 <div class="form-grid">
-
 
 <div class="form-field">
 <label>Correo institucional</label>
 <input type="email" id="email" required>
 </div>
 
-
 <div class="form-field">
-
 <label>Contraseña</label>
 
 <div class="input-password">
-
 <input type="password" id="password" required>
 
-<button
-type="button"
+<button type="button"
 class="password-toggle"
 onclick="togglePassword(this,'password')">
 
-👁
+<img src="assets/assets/eye.png">
 
 </button>
-
 </div>
 
 </div>
 
-
 </div>
-
 
 <div class="form-buttons" style="justify-content:center">
-
-<button type="submit" class="btn btn-primary">
-Ingresar
-</button>
-
+<button type="submit" class="btn btn-primary">Ingresar</button>
 </div>
 
 </form>
 
-
 <p style="text-align:center;margin-top:15px">
-
-¿No tienes cuenta?
-<a href="register.html">Regístrate</a>
-
+¿No tienes cuenta? <a href="register.html">Regístrate</a>
 </p>
 
 </section>
 
 </div>
-
 
 <script src="js/auth/auth.js"></script>
 <script src="js/login.js"></script>

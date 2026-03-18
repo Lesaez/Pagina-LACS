@@ -1,91 +1,89 @@
-const express = require("express");
+const express = require("express"); 
 const router = express.Router();
 const nodemailer = require("nodemailer");
 const multer = require("multer");
+const db = require("../config/database");
 
-/* ================= MULTER ================= */
+const upload = multer({ storage: multer.memoryStorage() });
 
-const storage = multer.memoryStorage();
+/* ================= GENERADOR SIMPLE ================= */
 
-const upload = multer({
-  storage: storage
-});
+async function generarCodigo(tipo){
+
+  const [rows] = await db.query(
+    "SELECT numero FROM consecutivos WHERE tipo = ?",
+    [tipo]
+  );
+
+  let numero = rows[0].numero + 1;
+
+  await db.query(
+    "UPDATE consecutivos SET numero = ? WHERE tipo = ?",
+    [numero, tipo]
+  );
+
+  return tipo + String(numero).padStart(6, "0");
+}
 
 /* ================= RUTA ================= */
 
 router.post("/", upload.single("foto"), async (req, res) => {
-try {
+try{
+
 const { nombre, documento, jefe, activo, descripcion } = req.body;
 
-/* ================= TRANSPORTER ================= */
+/* 🔥 SOLO GENERAMOS CODIGO */
+const codigo = await generarCodigo("RDL");
 
-const transporter = nodemailer.createTransport({
-service: "gmail",
-auth: {
-user: process.env.EMAIL_USER,
-pass: process.env.EMAIL_PASS
-}
-});
-
-/* ================= HTML CORREO ================= */
+/* ================= HTML ================= */
 
 const html = `
-
 <h2>Reporte de daños - LACS</h2>
 
-<table border="1" cellpadding="8" cellspacing="0">
+<h3>Código: ${codigo}</h3>
 
-<tr>
-<th>Nombre</th>
-<td>${nombre}</td>
-</tr>
-
-<tr>
-<th>Documento</th>
-<td>${documento}</td>
-</tr>
-
-<tr>
-<th>Nombre del jefe</th>
-<td>${jefe}</td>
-</tr>
-
-<tr>
-<th>Número de activo</th>
-<td>${activo || "No especificado"}</td>
-</tr>
-
-<tr>
-<th>Descripción</th>
-<td>${descripcion}</td>
-</tr>
-
-</table>
+<b>Nombre:</b> ${nombre}<br>
+<b>Documento:</b> ${documento}<br>
+<b>Jefe:</b> ${jefe}<br>
+<b>Activo:</b> ${activo}<br>
+<b>Descripción:</b> ${descripcion}
 `;
 
-/* ================= ADJUNTOS ================= */
+/* ================= ADJUNTO ================= */
 
 let attachments = [];
+
 if (req.file) {
-attachments.push({
-filename: req.file.originalname,
-content: req.file.buffer
-});
+  attachments.push({
+    filename: req.file.originalname,
+    content: req.file.buffer
+  });
 }
 
-/* ================= ENVIAR CORREO ================= */
+/* ================= EMAIL ================= */
+
+const transporter = nodemailer.createTransport({
+  service:"gmail",
+  auth:{
+    user:process.env.EMAIL_USER,
+    pass:process.env.EMAIL_PASS
+  }
+});
 
 await transporter.sendMail({
-from: process.env.EMAIL_USER,
-to: "cbarriosm@uninorte.edu.co",
-subject: "Reporte de daños de activos - LACS",
-html: html,
-attachments: attachments
+  from:process.env.EMAIL_USER,
+  to:"cbarriosm@uninorte.edu.co",
+  subject:`Reporte ${codigo}`,
+  html,
+  attachments
 });
-res.json({ ok: true });
-} catch (error) {
-console.error(error);
-res.status(500).json({ error: "Error enviando correo" });
+
+res.json({ ok:true, codigo });
+
+}catch(err){
+console.error(err);
+res.status(500).json({error:"Error"});
 }
 });
+
 module.exports = router;

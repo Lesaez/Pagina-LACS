@@ -1,0 +1,18 @@
+.solicitud-header{
+  margin-bottom:30px;
+  color:white;
+}
+
+.solicitud-header h2{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.solicitud-header p{
+  max-width:700px;
+  line-height:1.5;
+}
+
+.solicitud-form-container{
+  margin-top:20px;
+}

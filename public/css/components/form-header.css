@@ -1,0 +1,32 @@
+.form-header{
+
+  max-width:1100px; /* mismo que card */
+  margin:40px auto 20px auto;
+
+  padding:0 20px;
+
+  color:white;
+  text-align:center;
+
+}
+
+/* TÍTULO */
+.form-header h2{
+
+  font-size:24px;
+  font-weight:700;
+
+  margin-bottom:10px;
+
+}
+
+/* TEXTO */
+.form-header p{
+
+  font-size:14px;
+  opacity:.9;
+
+  max-width:700px;
+  margin:0 auto;
+
+}

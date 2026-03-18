@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body class="app-page">
 
 <header class="header">
   <div class="header-container">
@@ -45,24 +45,28 @@
       </select>
     </div>
 
+    <!-- 🔥 BOTONES AGRUPADOS -->
     <div class="header-actions">
 
-      <button id="btnVerTipos" class="btn btn-primary">
-        Ver Tipos
-      </button>
+      <div class="actions-group">
+        <button type="button" id="btnVerTipos" class="btn btn-primary">
+          Ver Tipos
+        </button>
 
-      <button id="btnNuevo" class="btn btn-primary">
-        + Añadir Activo
-      </button>
+        <button type="button" id="btnNuevo" class="btn btn-primary">
+          + Añadir Activo
+        </button>
 
-      <!-- 🔥 BOTÓN EXPORTAR EXCEL -->
-      <button id="btnExportar" class="btn btn-primary">
-        Exportar Excel
-      </button>
+        <button type="button" id="btnExportar" class="btn btn-primary">
+          Exportar Excel
+        </button>
+      </div>
 
-      <button onclick="window.location.href='home.html'" class="btn btn-primary">
-        Inicio
-      </button>
+      <div class="actions-group">
+        <button type="button" onclick="window.location.href='home.html'" class="btn btn-primary">
+          Inicio
+        </button>
+      </div>
 
     </div>
 
@@ -72,16 +76,16 @@
 <main class="main">
   <div class="container">
 
-    <div id="filtroActivoBox" class="filtro-activo hidden">
+    <div id="filtroActivoBox" class="filtro-activo" style="display: none;">
       <span id="textoFiltroActivo"></span>
-      <button id="btnQuitarFiltro" class="btn btn-secondary">
+      <button type="button" id="btnQuitarFiltro" class="btn btn-secondary">
         Mostrar todos
       </button>
     </div>
 
     <section class="card">
       <div class="table-container">
-        <table>
+        <table class="table">
           <thead>
             <tr>
               <th>#</th>
@@ -107,7 +111,7 @@
 
     <div class="modal-header">
       <h3 id="tituloModal">Nuevo Activo</h3>
-      <button id="btnCerrarEditar" class="btn btn-danger">X</button>
+      <button type="button" id="btnCerrarEditar" class="btn btn-danger">X</button>
     </div>
 
     <form id="inventarioForm">
@@ -149,7 +153,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <h3>Tipos de Activo</h3>
-      <button id="btnCerrarTipos" class="btn btn-danger">X</button>
+      <button type="button" id="btnCerrarTipos" class="btn btn-danger">X</button>
     </div>
     <div id="listaTipos"></div>
   </div>
@@ -160,7 +164,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <h3>Detalle del Activo</h3>
-      <button id="btnCerrarDetalle" class="btn btn-danger">X</button>
+      <button type="button" id="btnCerrarDetalle" class="btn btn-danger">X</button>
     </div>
     <div id="detalleContenido" class="detalle-grid"></div>
   </div>

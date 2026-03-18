@@ -1,9 +1,8 @@
 :root {
-
-  --color-primary: #15366b;
+  --color-primary: #3b82f6;
   --color-primary-hover: #2563eb;
 
-  --color-danger: #812121;
+  --color-danger: #ef4444;
   --color-danger-hover: #dc2626;
 
   --color-secondary: #64748b;
@@ -21,5 +20,4 @@
 
   --shadow-sm: 0 2px 6px rgba(0,0,0,.05);
   --shadow-md: 0 4px 12px rgba(0,0,0,.08);
-
 }

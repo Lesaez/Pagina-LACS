@@ -1,177 +1,138 @@
-/* ================= AUTH CARD ================= */
-
 .auth-card{
-
-animation:fadeUp .4s ease;
-max-width:520px;
-margin:auto;
-
+  animation:fadeUp .4s ease;
+  max-width:520px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
 }
 
 @keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(20px);
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-
-/* ================= INPUT PASSWORD ================= */
+/* INPUT PASSWORD */
 
 .input-password{
+  display:flex;
+  align-items:center;
 
-display:flex;
-align-items:center;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
 
-border:1px solid #cbd5e1;
-border-radius:10px;
+  background:white;
 
-background:white;
-
-overflow:hidden;
-
-transition:.2s;
-
+  overflow:hidden;
+  transition:.2s;
 }
 
 .input-password:focus-within{
-border-color:#3b82f6;
-box-shadow:0 0 0 2px rgba(59,130,246,.15);
+  border-color:#3b82f6;
+  box-shadow:0 0 0 2px rgba(59,130,246,.15);
 }
-
-
-/* ================= INPUT ================= */
 
 .input-password input{
-
-flex:1;
-
-border:none;
-outline:none;
-
-padding:10px 12px;
-
-font-size:14px;
-
-background:transparent;
-
+  flex:1;
+  border:none;
+  outline:none;
+  padding:10px 12px;
+  font-size:14px;
+  background:transparent;
 }
 
-
-/* ================= BOTON OJO ================= */
+/* BOTON OJO */
 
 .password-toggle{
+  width:42px;
+  height:100%;
 
-width:42px;
-height:100%;
+  border:none;
+  background:transparent;
 
-border:none;
-background:transparent;
+  cursor:pointer;
 
-cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-display:flex;
-align-items:center;
-justify-content:center;
-
-transition:.2s;
-
+  transition:.2s;
 }
 
 .password-toggle:hover{
-
-background:#f1f5f9;
-
+  background:#f1f5f9;
 }
 
 .password-toggle img{
-
-width:45px;
-height:45px;
-
-pointer-events:none;
-
-opacity:.7;
-
-transition:.2s;
-
+  width:24px;
+  height:24px;
+  pointer-events:none;
+  opacity:.7;
+  transition:.2s;
 }
 
 .password-toggle:hover img{
-
-opacity:1;
-
+  opacity:1;
 }
 
-
-/* ================= PASSWORD STRENGTH ================= */
+/* PASSWORD STRENGTH */
 
 .password-strength-container{
-
-margin-top:8px;
-
-display:none; /* oculto al inicio */
-
-align-items:center;
-gap:10px;
-
+  margin-top:8px;
+  display:none;
+  align-items:center;
+  gap:10px;
 }
 
 .password-strength-bar{
-
-height:6px;
-width:0;
-
-background:#ddd;
-
-border-radius:10px;
-
-flex:1;
-
-transition:.35s ease;
-
+  height:6px;
+  width:0;
+  background:#ddd;
+  border-radius:10px;
+  flex:1;
+  transition:.35s ease;
 }
 
 .password-strength-text{
-
-font-size:12px;
-color:#64748b;
-
-min-width:70px;
-
+  font-size:12px;
+  color:#64748b;
+  min-width:70px;
 }
 
-
-/* ================= MENSAJE ERROR ================= */
+/* ERROR */
 
 .error-msg{
-
-color:#dc2626;
-font-size:12px;
-margin-top:4px;
-
+  color:#dc2626;
+  font-size:12px;
+  margin-top:4px;
 }
 
-
-/* ================= REGISTER PAGE ================= */
+/* REGISTER PAGE */
 
 .register-page{
 
-min-height:100vh;
+  min-height:100vh;
 
-display:flex;
-align-items:center;
-justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-background:var(--color-bg);
+  background-image:
+  linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+  url("../../assets/fondo.png");
 
-padding:40px 20px;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
 
+  background-attachment: fixed;
+
+  padding:40px 20px;
 }
+
+

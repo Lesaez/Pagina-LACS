@@ -1,0 +1,27 @@
+/* ================= MAIN ================= */
+
+.main{
+  margin-top:0.1%;
+  padding:20px;
+}
+
+.container{
+  max-width:1300px;
+  margin:auto;
+}
+
+/* ================= CARD ================= */
+
+.card{
+  background:var(--color-card);
+  padding:25px;
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-sm);
+  margin-bottom:20px;
+}
+
+/* ================= TABLE ================= */
+
+.table-container{
+  overflow-x:auto;
+}
