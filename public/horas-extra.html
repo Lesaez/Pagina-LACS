@@ -34,20 +34,21 @@ Inicio
 
 <div class="container">
 
+<<<<<<< HEAD
+=======
 <!-- TITULO -->
 
+>>>>>>> 1d456bb62ffb13b1ff12f126056a17d1f7372d6e
 <section class="card">
 
 <h2>REGISTRO DE HORAS EXTRA LACS</h2>
 
 <p>
-En este apartado los colaboradores podrán registrar las horas extra realizadas durante sus jornadas laborales.
+Registro de horas extra realizadas durante la jornada laboral.
 </p>
 
 </section>
 
-
-<!-- FORMULARIO -->
 
 <section class="card">
 
@@ -59,17 +60,17 @@ En este apartado los colaboradores podrán registrar las horas extra realizadas 
 
 <div class="form-field">
 <label>Nombre y Apellidos</label>
-<input type="text" id="trabajador">
+<input type="text" id="trabajador" required>
 </div>
 
 <div class="form-field">
 <label>Documento de Identidad</label>
-<input type="text" id="documento">
+<input type="text" id="documento" required>
 </div>
 
 <div class="form-field">
 <label>Centro de Costo</label>
-<input type="text" id="centroCosto">
+<input type="text" id="centroCosto" required>
 </div>
 
 </div>
@@ -81,12 +82,12 @@ En este apartado los colaboradores podrán registrar las horas extra realizadas 
 
 <div class="form-field">
 <label>Vo.Bo. de quien autoriza</label>
-<input type="text" id="autoriza">
+<input type="text" id="autoriza" required>
 </div>
 
 <div class="form-field">
 <label>Cargo</label>
-<input type="text" id="cargo">
+<input type="text" id="cargo" required>
 </div>
 
 </div>
@@ -98,36 +99,25 @@ En este apartado los colaboradores podrán registrar las horas extra realizadas 
 <table class="table">
 
 <thead>
-
 <tr>
-
 <th>Fecha</th>
 <th>Motivo</th>
 <th>Desde</th>
 <th>Hasta</th>
 <th></th>
-
 </tr>
-
 </thead>
 
 <tbody id="tablaHoras">
 
 <tr>
-
-<td><input type="date"></td>
-<td><input type="text"></td>
-<td><input type="time"></td>
-<td><input type="time"></td>
-
+<td><input type="date" required></td>
+<td><input type="text" required></td>
+<td><input type="time" required></td>
+<td><input type="time" required></td>
 <td>
-
-<button type="button" class="btn btn-danger eliminarFila">
-X
-</button>
-
+<button type="button" class="btn btn-danger eliminarFila">X</button>
 </td>
-
 </tr>
 
 </tbody>
@@ -160,40 +150,39 @@ Enviar registro
 <script>
 
 /* añadir fila */
-
 const tabla = document.getElementById("tablaHoras");
 
 document.getElementById("agregarFila").addEventListener("click", () => {
-
-const fila = tabla.rows[0].cloneNode(true);
-
-fila.querySelectorAll("input").forEach(input => input.value = "");
-
-tabla.appendChild(fila);
-
+  const fila = tabla.rows[0].cloneNode(true);
+  fila.querySelectorAll("input").forEach(input => input.value = "");
+  tabla.appendChild(fila);
 });
 
 
 /* eliminar fila */
-
 document.addEventListener("click", (e) => {
-
-if (e.target.classList.contains("eliminarFila")) {
-
-if (tabla.rows.length > 1) {
-e.target.closest("tr").remove();
-}
-
-}
-
+  if (e.target.classList.contains("eliminarFila")) {
+    if (tabla.rows.length > 1) {
+      e.target.closest("tr").remove();
+    }
+  }
 });
 
 
 /* enviar formulario */
-
 document.getElementById("formHoras").addEventListener("submit", async (e) => {
 
 e.preventDefault();
+
+const form = e.target;
+
+/* VALIDACIÓN NATIVA (igual que licencias) */
+if (!form.checkValidity()) {
+  alert("⚠️ Faltan campos por llenar");
+  return;
+}
+
+/* ================= ENVÍO ================= */
 
 const horas = [];
 
@@ -202,16 +191,13 @@ document.querySelectorAll("#tablaHoras tr").forEach(tr => {
 const inputs = tr.querySelectorAll("input");
 
 horas.push({
-
 fecha: inputs[0].value,
 motivo: inputs[1].value,
 desde: inputs[2].value,
 hasta: inputs[3].value
-
 });
 
 });
-
 
 const data = {
 
@@ -220,30 +206,22 @@ documento: document.getElementById("documento").value,
 centroCosto: document.getElementById("centroCosto").value,
 autoriza: document.getElementById("autoriza").value,
 cargo: document.getElementById("cargo").value,
-
 horas
 
 };
 
-
 const res = await fetch("/api/horas-extra",{
-
 method:"POST",
 headers:{
 "Content-Type":"application/json"
 },
 body:JSON.stringify(data)
-
 });
 
 if(res.ok){
-
 alert("Registro enviado correctamente");
-
 }else{
-
 alert("Error enviando correo");
-
 }
 
 });

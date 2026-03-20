@@ -19,15 +19,58 @@
   padding: 25px;
   border-radius: 18px;
   animation: fadeIn .2s ease;
+
+  /* 🔥 CONTROL DE ALTURA */
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
+/* 🔥 HEADER MEJORADO */
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+
+  padding-bottom: 12px;
+  margin-bottom: 15px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* 🔥 TÍTULO */
+.modal-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* 🔥 BOTÓN CERRAR */
+.modal-header .btn-danger {
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+/* 🔥 LISTA DE TIPOS */
+#listaTipos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(.95); }
-  to { opacity: 1; transform: scale(1); }
+  from { 
+    opacity: 0; 
+    transform: scale(.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
 }
